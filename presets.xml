@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Presets>
+    <Preset name="Jessi">
+        <Field>Kauft etwas gesundes</Field>
+        <Field>War im Angebot</Field>
+        <Field>Testet etwas</Field>
+        <Field>Schmatzt</Field>
+        <Field>Kauft Deko</Field>
+        <Field>Hunde sind zu hören</Field>
+        <Field>War mit Mama/Papa unterwegs</Field>
+        <Field>P=B</Field>
+        <Field>K=G</Field>
+        <Field>Dulano</Field>
+        <Field>Etwas glitzert</Field>
+        <Field>Streicht sich durch den Zopf</Field>
+        <Field>Netto MARKT</Field>
+        <Field>Kauft etwas wegen der Farbe</Field>
+        <Field>Doppelt gekauft</Field>
+        <Field>TEDI</Field>
+        <Field>Kauft Binden</Field>
+        <Field>&quot;genau&quot;</Field>
+        <Field>DM Markt</Field>
+        <Field>&quot;Payback Punkte&quot;</Field>
+        <Field>Trockene Lippen</Field>
+        <Field>&quot;Zigarillos&quot;</Field>
+        <Field>Leckerli gekauft</Field>
+        <Field>Ist für den Mann</Field>
+    </Preset>
+    <Preset name="Twitch Bingo">
+        <Field>LULW</Field>
+        <Field>PogChamp</Field>
+        <Field>Kreygasm</Field>
+        <Field>BibleThump</Field>
+        <Field>Kappa</Field>
+        <Field>MonkaS</Field>
+        <Field>omegalul</Field>
+        <Field>Pog</Field>
+        <Field>FeelsGoodMan</Field>
+        <Field>FeelsBadMan</Field>
+        <Field>PepeHands</Field>
+        <Field>Clap</Field>
+        <Field>AYAYA</Field>
+        <Field>Jebaited</Field>
+        <Field>CoolStoryBob</Field>
+        <Field>TriHard</Field>
+        <Field>cmonBruh</Field>
+        <Field>residentsleeper</Field>
+        <Field>heyguys</Field>
+        <Field>notlikethis</Field>
+        <Field>dance</Field>
+        <Field>hype</Field>
+        <Field>raid</Field>
+        <Field>sub</Field>
+        <Field>donation</Field>
+    </Preset>
+</Presets>
