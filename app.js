@@ -14,6 +14,9 @@ class BingoApp {
         this.fieldPool = [];
         this.presets = []; // { name: string, fields: string[] }
         this.currentPresetName = "";
+        this.fontSize = 16; // Default font size in px
+        this.minFontSize = 8;
+        this.maxFontSize = 32;
 
         this.initializeElements();
         this.attachEventListeners();
@@ -28,9 +31,14 @@ class BingoApp {
     initializeElements() {
         // Settings
         this.gridSizeSelect = document.getElementById('gridSize');
-        this.jokerCountInput = document.getElementById('jokerCount');
+        this.decreaseJokerBtn = document.getElementById('decreaseJokerBtn');
+        this.increaseJokerBtn = document.getElementById('increaseJokerBtn');
+        this.jokerCountDisplay = document.getElementById('jokerCountDisplay');
         this.settingsPanel = document.getElementById('settingsPanel');
         this.toggleSettingsBtn = document.getElementById('toggleSettings');
+        this.decreaseFontBtn = document.getElementById('decreaseFontBtn');
+        this.increaseFontBtn = document.getElementById('increaseFontBtn');
+        this.fontSizeDisplay = document.getElementById('fontSizeDisplay');
 
         // Control buttons
         this.shuffleBtn = document.getElementById('shuffleBtn');
@@ -80,8 +88,11 @@ class BingoApp {
     attachEventListeners() {
         // Settings
         this.gridSizeSelect.addEventListener('change', () => this.handleGridSizeChange());
-        this.jokerCountInput.addEventListener('change', () => this.handleJokerCountChange());
+        this.decreaseJokerBtn.addEventListener('click', () => this.changeJokerCount(-1));
+        this.increaseJokerBtn.addEventListener('click', () => this.changeJokerCount(1));
         this.toggleSettingsBtn.addEventListener('click', () => this.toggleSettings());
+        this.decreaseFontBtn.addEventListener('click', () => this.changeFontSize(-1));
+        this.increaseFontBtn.addEventListener('click', () => this.changeFontSize(1));
 
         // Control buttons
         this.shuffleBtn.addEventListener('click', () => this.shuffleCells());
@@ -229,6 +240,7 @@ class BingoApp {
         }
 
         this.updateStats();
+        this.applyFontSize();
     }
 
     assignJokers() {
@@ -870,7 +882,7 @@ class BingoApp {
             // Adjust joker count if necessary
             if (this.jokerCount > totalCells) {
                 this.jokerCount = Math.floor(totalCells / 5);
-                this.jokerCountInput.value = this.jokerCount;
+                this.updateJokerDisplay();
             }
 
             this.assignJokers();
@@ -881,25 +893,23 @@ class BingoApp {
         }
     }
 
-    handleJokerCountChange() {
-        const newCount = parseInt(this.jokerCountInput.value);
+    changeJokerCount(delta) {
         const totalCells = this.gridSize * this.gridSize;
+        const newCount = this.jokerCount + delta;
 
-        if (newCount < 0) {
-            this.jokerCountInput.value = 0;
-            return;
-        }
-
-        if (newCount > totalCells) {
-            this.jokerCountInput.value = totalCells;
-            this.jokerCount = totalCells;
-        } else {
+        if (newCount >= 0 && newCount <= totalCells) {
             this.jokerCount = newCount;
+            this.updateJokerDisplay();
+            this.assignJokers();
+            this.generateBoard();
+            this.saveToStorage();
         }
+    }
 
-        this.assignJokers();
-        this.generateBoard();
-        this.saveToStorage();
+    updateJokerDisplay() {
+        if (this.jokerCountDisplay) {
+            this.jokerCountDisplay.textContent = this.jokerCount;
+        }
     }
 
     toggleSettings() {
@@ -909,6 +919,31 @@ class BingoApp {
             this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Einstellungen anzeigen';
         } else {
             this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Einstellungen ausblenden';
+        }
+    }
+
+    // ========================================
+    // Font Size Control
+    // ========================================
+    changeFontSize(delta) {
+        const newSize = this.fontSize + delta;
+        if (newSize >= this.minFontSize && newSize <= this.maxFontSize) {
+            this.fontSize = newSize;
+            this.applyFontSize();
+            this.updateFontSizeDisplay();
+            this.saveToStorage();
+        }
+    }
+
+    applyFontSize() {
+        if (this.bingoBoard) {
+            this.bingoBoard.style.setProperty('--cell-font-size', `${this.fontSize}px`);
+        }
+    }
+
+    updateFontSizeDisplay() {
+        if (this.fontSizeDisplay) {
+            this.fontSizeDisplay.textContent = `${this.fontSize}px`;
         }
     }
 
@@ -925,7 +960,8 @@ class BingoApp {
             currentPresetName: this.currentPresetName,
             // bingoCount: this.bingoCount,
             currentBingoStates: [...this.currentBingoStates],
-            isBingoModalOpen: this.bingoModal.classList.contains('active')
+            isBingoModalOpen: this.bingoModal.classList.contains('active'),
+            fontSize: this.fontSize
         };
 
         localStorage.setItem('bingoApp', JSON.stringify(data));
@@ -943,13 +979,14 @@ class BingoApp {
                 this.fieldPool = data.fieldPool || [];
                 this.presets = data.presets || [];
                 this.currentPresetName = data.currentPresetName || "";
+                this.fontSize = data.fontSize || 16;
 
                 // this.bingoCount = data.bingoCount || 0; // No longer loaded as cumulative
                 this.currentBingoStates = new Set(data.currentBingoStates || []);
                 const isBingoModalOpen = data.isBingoModalOpen || false;
 
                 this.gridSizeSelect.value = this.gridSize;
-                this.jokerCountInput.value = this.jokerCount;
+                this.updateJokerDisplay();
 
                 // Clean up any cells that have JOKER text but aren't actually jokers
                 this.cells.forEach((cell, index) => {
@@ -966,6 +1003,7 @@ class BingoApp {
                     }
                 });
 
+                this.updateFontSizeDisplay();
                 this.generateBoard();
 
                 if (isBingoModalOpen) {

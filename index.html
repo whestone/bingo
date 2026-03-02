@@ -50,6 +50,79 @@
             box-sizing: border-box;
             height: 100%;
         }
+
+        /* Number controls */
+        .number-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .number-control .btn {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .number-display {
+            min-width: 45px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        /* Apply font size from JS */
+        #bingoBoard .cell-text {
+            font-size: var(--cell-font-size, 1rem);
+        }
+
+        /* X Animation for marked cells */
+        .bingo-cell {
+            position: relative;
+        }
+
+        .bingo-cell.marked:not(.joker)::before,
+        .bingo-cell.marked:not(.joker)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            height: 7px;
+            background: red;
+            border-radius: 99px;
+            pointer-events: none;
+            opacity: 0.9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .bingo-cell.marked:not(.joker)::before {
+            transform: translate(-50%, -50%) rotate(45deg) scaleX(0);
+            animation: drawXLeft 0.25s ease-out forwards;
+        }
+
+        .bingo-cell.marked:not(.joker)::after {
+            transform: translate(-50%, -50%) rotate(-45deg) scaleX(0);
+            animation: drawXRight 0.25s ease-out forwards 0.15s;
+        }
+
+        @keyframes drawXLeft {
+            to {
+                transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+            }
+        }
+
+        @keyframes drawXRight {
+            to {
+                transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
+            }
+        }
     </style>
 </head>
 
@@ -95,11 +168,34 @@
                         </div>
 
                         <div class="setting-group">
-                            <label for="jokerCount" class="setting-label">
+                            <label class="setting-label">
                                 <i class="fas fa-star label-icon"></i>
                                 Anzahl Joker
                             </label>
-                            <input type="number" id="jokerCount" class="setting-input" min="0" max="10" value="1">
+                            <div class="number-control">
+                                <button id="decreaseJokerBtn" class="btn btn-secondary" title="Weniger Joker">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span id="jokerCountDisplay" class="number-display">1</span>
+                                <button id="increaseJokerBtn" class="btn btn-secondary" title="Mehr Joker">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <i class="fas fa-font label-icon"></i>
+                                Schriftgröße
+                            </label>
+                            <div class="number-control">
+                                <button id="decreaseFontBtn" class="btn btn-secondary" title="Schrift verkleinern">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span id="fontSizeDisplay" class="number-display">16px</span>
+                                <button id="increaseFontBtn" class="btn btn-secondary" title="Schrift vergrößern">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="setting-group">
                             <label class="setting-label">
