@@ -3,13 +3,13 @@
     <Preset name="Jessy">
         <Field>Action</Field>
         <Field>Airfryer</Field>
-        <Field>An die Wunde fassen</Field>
         <Field>Auf Vorrat</Field>
         <Field>Auf Vorrat gekauft</Field>
         <Field>Aufgebraucht</Field>
         <Field>Beklagt sich</Field>
         <Field>B = P</Field>
         <Field>Butterkeks</Field>
+        <Field>Doppelt gekauft</Field>
         <Field>DM MARKT</Field>
         <Field>Disney</Field>
         <Field>Disney Figur</Field>
@@ -19,6 +19,7 @@
         <Field>Energy</Field>
         <Field>Erdbeerwoche</Field>
         <Field>Etwas doppelt gekauft</Field>
+        <Field>Etwas glitzert</Field>
         <Field>Etwas liegt noch oben/unten</Field>
         <Field>Etwas pinkes/rosanes</Field>
         <Field>Etwas selbstgemachtes</Field>
@@ -34,7 +35,12 @@
         <Field>Ins Haar fassen</Field>
         <Field>Ist außer Atem</Field>
         <Field>Ist für den Mann</Field>
+        <Field>K = G</Field>
+        <Field>Kauft Binden</Field>
+        <Field>Kauft Deko</Field>
+        <Field>Kauft etwas gesundes</Field>
         <Field>Kauft etwas reduziert</Field>
+        <Field>Kauft etwas wegen der Farbe</Field>
         <Field>Kinder Bieno</Field>
         <Field>Kinder Bueno</Field>
         <Field>Kinder Produkt</Field>
@@ -42,6 +48,7 @@
         <Field>Knick Joghurt</Field>
         <Field>Kuschelstoff</Field>
         <Field>Leckerchen für die Hunde</Field>
+        <Field>Leckerli gekauft</Field>
         <Field>Lidl Plus App</Field>
         <Field>Liest etwas und versteht es nicht</Field>
         <Field>Liest etwas englisch und versteht nichts</Field>
@@ -53,6 +60,7 @@
         <Field>Nur zum zwischendurch naschen</Field>
         <Field>P = B</Field>
         <Field>Paket kommt noch</Field>
+        <Field>Payback Punkte</Field>
         <Field>Prahlt mit Mann</Field>
         <Field>Preis vergessen</Field>
         <Field>Pumba</Field>
@@ -66,15 +74,21 @@
         <Field>Schminke gekauft</Field>
         <Field>Schon verbraucht</Field>
         <Field>So</Field>
+        <Field>Streicht sich durch den Zopf</Field>
         <Field>Super lecker</Field>
+        <Field>TEDI</Field>
         <Field>Temu</Field>
+        <Field>Testet etwas</Field>
         <Field>Timon</Field>
         <Field>Trägt Kuschelstoff</Field>
         <Field>T = D</Field>
+        <Field>Trockene Lippen</Field>
         <Field>Umverpackung</Field>
         <Field>Unterwäsche</Field>
         <Field>Unterwegs gegessen</Field>
+        <Field>War im Angebot</Field>
         <Field>War in 4 Läden</Field>
+        <Field>War mit Mama/Papa unterwegs</Field>
         <Field>Wäsche</Field>
         <Field>Weichspüler</Field>
         <Field>Wickelunterlage</Field>
