@@ -1,56 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Presets>
-    <Preset name="Jessi">
-        <Field>Kauft etwas gesundes</Field>
-        <Field>War im Angebot</Field>
-        <Field>Testet etwas</Field>
-        <Field>Schmatzt</Field>
-        <Field>Kauft Deko</Field>
+    <Preset name="Jessy">
+        <Field>Action</Field>
+        <Field>Airfryer</Field>
+        <Field>An die Wunde fassen</Field>
+        <Field>Auf Vorrat</Field>
+        <Field>Auf Vorrat gekauft</Field>
+        <Field>Aufgebraucht</Field>
+        <Field>Beklagt sich</Field>
+        <Field>B = P</Field>
+        <Field>Butterkeks</Field>
+        <Field>DM MARKT</Field>
+        <Field>Disney</Field>
+        <Field>Disney Figur</Field>
+        <Field>Disney ist zu sehen</Field>
+        <Field>Durch den Zopf streichen</Field>
+        <Field>Einfrieren</Field>
+        <Field>Energy</Field>
+        <Field>Erdbeerwoche</Field>
+        <Field>Etwas doppelt gekauft</Field>
+        <Field>Etwas liegt noch oben/unten</Field>
+        <Field>Etwas pinkes/rosanes</Field>
+        <Field>Etwas selbstgemachtes</Field>
+        <Field>Für die Jungs / Für meine Jungs</Field>
+        <Field>Für ihren Mann</Field>
+        <Field>Für zwischendurch</Field>
+        <Field>G = K</Field>
+        <Field>Genau</Field>
+        <Field>Hat mein Mann gemacht</Field>
+        <Field>Haut auf die Verpackung</Field>
+        <Field>Haushalt gemacht</Field>
         <Field>Hunde sind zu hören</Field>
-        <Field>War mit Mama/Papa unterwegs</Field>
-        <Field>P=B</Field>
-        <Field>K=G</Field>
-        <Field>Dulano</Field>
-        <Field>Etwas glitzert</Field>
-        <Field>Streicht sich durch den Zopf</Field>
-        <Field>Netto MARKT</Field>
-        <Field>Kauft etwas wegen der Farbe</Field>
-        <Field>Doppelt gekauft</Field>
-        <Field>TEDI</Field>
-        <Field>Kauft Binden</Field>
-        <Field>&quot;genau&quot;</Field>
-        <Field>DM Markt</Field>
-        <Field>&quot;Payback Punkte&quot;</Field>
-        <Field>Trockene Lippen</Field>
-        <Field>&quot;Zigarillos&quot;</Field>
-        <Field>Leckerli gekauft</Field>
+        <Field>Ins Haar fassen</Field>
+        <Field>Ist außer Atem</Field>
         <Field>Ist für den Mann</Field>
-    </Preset>
-    <Preset name="Twitch Bingo">
-        <Field>LULW</Field>
-        <Field>PogChamp</Field>
-        <Field>Kreygasm</Field>
-        <Field>BibleThump</Field>
-        <Field>Kappa</Field>
-        <Field>MonkaS</Field>
-        <Field>omegalul</Field>
-        <Field>Pog</Field>
-        <Field>FeelsGoodMan</Field>
-        <Field>FeelsBadMan</Field>
-        <Field>PepeHands</Field>
-        <Field>Clap</Field>
-        <Field>AYAYA</Field>
-        <Field>Jebaited</Field>
-        <Field>CoolStoryBob</Field>
-        <Field>TriHard</Field>
-        <Field>cmonBruh</Field>
-        <Field>residentsleeper</Field>
-        <Field>heyguys</Field>
-        <Field>notlikethis</Field>
-        <Field>dance</Field>
-        <Field>hype</Field>
-        <Field>raid</Field>
-        <Field>sub</Field>
-        <Field>donation</Field>
+        <Field>Kauft etwas reduziert</Field>
+        <Field>Kinder Bieno</Field>
+        <Field>Kinder Bueno</Field>
+        <Field>Kinder Produkt</Field>
+        <Field>Klobus</Field>
+        <Field>Knick Joghurt</Field>
+        <Field>Kuschelstoff</Field>
+        <Field>Leckerchen für die Hunde</Field>
+        <Field>Lidl Plus App</Field>
+        <Field>Liest etwas und versteht es nicht</Field>
+        <Field>Liest etwas englisch und versteht nichts</Field>
+        <Field>Meerschweinchen</Field>
+        <Field>Meine Jungs</Field>
+        <Field>Netto</Field>
+        <Field>Netto MARKT</Field>
+        <Field>Nur auf Vorrat gekauft</Field>
+        <Field>Nur zum zwischendurch naschen</Field>
+        <Field>P = B</Field>
+        <Field>Paket kommt noch</Field>
+        <Field>Prahlt mit Mann</Field>
+        <Field>Preis vergessen</Field>
+        <Field>Pumba</Field>
+        <Field>Richtig gute Qualität</Field>
+        <Field>Riecht an etwas</Field>
+        <Field>Rossmann</Field>
+        <Field>Sagt komisches Wort</Field>
+        <Field>Schaut auf Kassenbon</Field>
+        <Field>Schätzlein</Field>
+        <Field>Schmatzen</Field>
+        <Field>Schminke gekauft</Field>
+        <Field>Schon verbraucht</Field>
+        <Field>So</Field>
+        <Field>Super lecker</Field>
+        <Field>Temu</Field>
+        <Field>Timon</Field>
+        <Field>Trägt Kuschelstoff</Field>
+        <Field>T = D</Field>
+        <Field>Umverpackung</Field>
+        <Field>Unterwäsche</Field>
+        <Field>Unterwegs gegessen</Field>
+        <Field>War in 4 Läden</Field>
+        <Field>Wäsche</Field>
+        <Field>Weichspüler</Field>
+        <Field>Wickelunterlage</Field>
+        <Field>Will etwas kochen</Field>
+        <Field>XXL Verpackung</Field>
+        <Field>Zent</Field>
+        <Field>Zieht sich am Kragen</Field>
+        <Field>Zigarillos</Field>
     </Preset>
 </Presets>
