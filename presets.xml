@@ -3,7 +3,6 @@
     <Preset name="Jessy">
         <Field>Action</Field>
         <Field>Airfryer</Field>
-        <Field>Auf Vorrat</Field>
         <Field>Auf Vorrat gekauft</Field>
         <Field>Aufgebraucht</Field>
         <Field>Beklagt sich</Field>
@@ -12,8 +11,6 @@
         <Field>Doppelt gekauft</Field>
         <Field>DM MARKT</Field>
         <Field>Disney</Field>
-        <Field>Disney Figur</Field>
-        <Field>Disney ist zu sehen</Field>
         <Field>Durch den Zopf streichen</Field>
         <Field>Einfrieren</Field>
         <Field>Energy</Field>
@@ -35,7 +32,6 @@
         <Field>Ins Haar fassen</Field>
         <Field>Ist außer Atem</Field>
         <Field>Ist für den Mann</Field>
-        <Field>K = G</Field>
         <Field>Kauft Binden</Field>
         <Field>Kauft Deko</Field>
         <Field>Kauft etwas gesundes</Field>
@@ -51,14 +47,11 @@
         <Field>Leckerli gekauft</Field>
         <Field>Lidl Plus App</Field>
         <Field>Liest etwas und versteht es nicht</Field>
-        <Field>Liest etwas englisch und versteht nichts</Field>
         <Field>Meerschweinchen</Field>
         <Field>Meine Jungs</Field>
-        <Field>Netto</Field>
         <Field>Netto MARKT</Field>
         <Field>Nur auf Vorrat gekauft</Field>
         <Field>Nur zum zwischendurch naschen</Field>
-        <Field>P = B</Field>
         <Field>Paket kommt noch</Field>
         <Field>Payback Punkte</Field>
         <Field>Prahlt mit Mann</Field>
