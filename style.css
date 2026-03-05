@@ -447,7 +447,7 @@ body {
 }
 
 .bingo-cell:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(0px) scale(1.05);
     box-shadow: var(--shadow-md);
     border-color: var(--color-primary);
 }
@@ -471,24 +471,13 @@ body {
     position: relative;
 }
 
-.bingo-cell.joker::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    background-image: url('https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_44a409dad6214290b7891424e49f0eb2/default/dark/3.0');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 1;
-    z-index: 2;
-}
-
-.bingo-cell.joker span {
-    opacity: 0;
+.joker-icon {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 10%;
+    position: relative;
+    z-index: 1;
 }
 
 .bingo-cell.empty {

@@ -204,17 +204,9 @@ class BingoApp {
 
                 if (cell.isJoker) {
                     cellEl.classList.add('joker');
-                    cellEl.innerHTML = `
-                        <div class="cell-content">
-                            <i class="fas fa-star joker-icon"></i>
-                        </div>
-                    `;
+                    cellEl.innerHTML = `<img src="joker.png" alt="Joker" class="joker-icon">`;
                 } else {
-                    cellEl.innerHTML = `
-                        <div class="cell-content">
-                            <span class="cell-text">${cell.text}</span>
-                        </div>
-                    `;
+                    cellEl.innerHTML = `<span class="cell-text">${cell.text}</span>`;
                 }
 
                 if (cell.isMarked) {
