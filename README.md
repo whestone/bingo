@@ -233,19 +233,6 @@ Sicheres Escaping für XML-Export
 
 ## 🎨 Anpassung
 
-### CSS-Variablen
-Die App verwendet ein umfangreiches CSS-Variables-System:
-
-```css
-:root {
-  --color-primary: hsl(262, 83%, 58%);
-  --color-bg-primary: hsl(240, 21%, 15%);
-  --spacing-md: 1rem;
-  --radius-md: 0.75rem;
-  /* ... weitere Variablen */
-}
-```
-
 ### Eigene Presets
 Erstellen Sie `presets.xml` mit Ihrer Feld-Sammlung:
 
