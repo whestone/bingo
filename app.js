@@ -384,11 +384,7 @@ class BingoApp {
         this.fieldPool = lines;
 
         // Shuffle and pick for current board
-        const shuffled = [...this.fieldPool];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
+        const shuffled = this.shuffleArray(this.fieldPool);
         const selected = shuffled.slice(0, required);
 
         // Apply to cells
@@ -707,42 +703,6 @@ class BingoApp {
         this.saveToStorage();
     }
 
-    createConfetti() {
-        const confettiContainer = this.bingoModal.querySelector('.confetti');
-        confettiContainer.innerHTML = '';
-
-        const colors = ['#a78bfa', '#60a5fa', '#34d399', '#fbbf24', '#f87171'];
-
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'absolute';
-            confetti.style.width = '10px';
-            confetti.style.height = '10px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.top = -10 + 'px';
-            confetti.style.borderRadius = '50%';
-            confetti.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
-            confetti.style.animationDelay = Math.random() * 2 + 's';
-            confettiContainer.appendChild(confetti);
-        }
-
-        // Add animation
-        if (!document.getElementById('confetti-animation')) {
-            const style = document.createElement('style');
-            style.id = 'confetti-animation';
-            style.textContent = `
-                @keyframes fall {
-                    to {
-                        transform: translateY(600px) rotate(360deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-    }
-
     // ========================================
     // Actions
     // ========================================
@@ -772,11 +732,7 @@ class BingoApp {
         const required = this.gridSize * this.gridSize - this.jokerCount;
 
         // Pick random items from pool
-        const shuffledPool = [...this.fieldPool];
-        for (let i = shuffledPool.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledPool[i], shuffledPool[j]] = [shuffledPool[j], shuffledPool[i]];
-        }
+        const shuffledPool = this.shuffleArray(this.fieldPool);
         const selected = shuffledPool.slice(0, required);
 
         // Reassign jokers to new random positions
@@ -857,11 +813,7 @@ class BingoApp {
             }
 
             // Shuffle and pick from pool
-            const shuffled = [...this.fieldPool];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
+            const shuffled = this.shuffleArray(this.fieldPool);
             const selected = shuffled.slice(0, required);
 
             this.cells = Array(totalCells).fill('').map((_, i) => ({
@@ -1040,54 +992,45 @@ class BingoApp {
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            font-weight: 600;
-            z-index: 2000;
-            animation: slideInRight 0.3s ease-out;
-        `;
 
         document.body.appendChild(notification);
 
         setTimeout(() => {
-            notification.style.animation = 'slideOutRight 0.3s ease-out';
+            notification.classList.add('slide-out');
             setTimeout(() => notification.remove(), 300);
         }, 3000);
+    }
 
-        // Add animations if not exists
-        if (!document.getElementById('notification-animations')) {
-            const style = document.createElement('style');
-            style.id = 'notification-animations';
-            style.textContent = `
-                @keyframes slideInRight {
-                    from {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                @keyframes slideOutRight {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+    // ========================================
+    // Helpers
+    // ========================================
+    shuffleArray(array) {
+        const newArr = [...array]; // Create a shallow copy
+        for (let i = newArr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+        }
+        return newArr;
+    }
+
+    createConfetti() {
+        const confettiContainer = this.bingoModal.querySelector('.confetti');
+        confettiContainer.innerHTML = '';
+
+        const colors = ['#a78bfa', '#60a5fa', '#34d399', '#fbbf24', '#f87171'];
+
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'absolute';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.top = -10 + 'px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confettiContainer.appendChild(confetti);
         }
     }
 
