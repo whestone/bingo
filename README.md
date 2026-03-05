@@ -30,9 +30,6 @@ Eine moderne, interaktive Bingo-Anwendung mit anpassbarer Grid-Größe, Joker-Fe
 - **Keyboard-Shortcuts**: ESC zum Schließen von Modals
 - **Cross-Browser-Support**: Funktioniert in allen modernen Browsern
 
-### Option 2: Statische Dateien
-Laden Sie einfach alle Dateien (`index.html`, `app.js`, `style.css`, `presets.xml`) in einen Ordner und öffnen Sie `index.html` in Ihrem Browser.
-
 ## 📖 Verwendung
 
 ### Grundlegende Bedienung
