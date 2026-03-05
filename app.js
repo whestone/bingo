@@ -9,7 +9,6 @@ class BingoApp {
         this.cells = [];
         this.markedCells = new Set();
         this.currentEditCell = null;
-        this.bingoCount = 0;
         this.currentBingoStates = new Set();
         this.fieldPool = [];
         this.presets = []; // { name: string, fields: string[] }
@@ -161,6 +160,7 @@ class BingoApp {
         this.bingoBoard.style.gridTemplateColumns = `auto repeat(${this.gridSize}, minmax(0, 1fr))`;
         this.bingoBoard.style.gridTemplateRows = `auto repeat(${this.gridSize}, minmax(0, 1fr))`;
 
+        const fragment = document.createDocumentFragment();
         const totalCells = this.gridSize * this.gridSize;
 
         // Initialize cells if needed
@@ -176,14 +176,14 @@ class BingoApp {
         // Add top-left corner (empty)
         const cornerCell = document.createElement('div');
         cornerCell.className = 'board-label corner-label';
-        this.bingoBoard.appendChild(cornerCell);
+        fragment.appendChild(cornerCell);
 
         // Add column labels (A, B, C, ...)
         for (let col = 0; col < this.gridSize; col++) {
             const colLabel = document.createElement('div');
             colLabel.className = 'board-label col-label';
             colLabel.textContent = String.fromCharCode(65 + col); // A, B, C, ...
-            this.bingoBoard.appendChild(colLabel);
+            fragment.appendChild(colLabel);
         }
 
         // Add rows with row labels and cells
@@ -192,7 +192,7 @@ class BingoApp {
             const rowLabel = document.createElement('div');
             rowLabel.className = 'board-label row-label';
             rowLabel.textContent = (row + 1).toString();
-            this.bingoBoard.appendChild(rowLabel);
+            fragment.appendChild(rowLabel);
 
             // Add cells for this row
             for (let col = 0; col < this.gridSize; col++) {
@@ -221,11 +221,6 @@ class BingoApp {
                     cellEl.classList.add('marked');
                 }
 
-                // The 'empty' class logic was removed in the provided snippet, so I'm omitting it.
-                // if (!cell.text.trim()) {
-                //     cellEl.classList.add('empty');
-                // }
-
                 // Event listeners
                 cellEl.addEventListener('click', () => this.toggleCell(index));
                 cellEl.addEventListener('dblclick', (e) => {
@@ -235,10 +230,11 @@ class BingoApp {
                     }
                 });
 
-                this.bingoBoard.appendChild(cellEl);
+                fragment.appendChild(cellEl);
             }
         }
 
+        this.bingoBoard.appendChild(fragment);
         this.updateStats();
         this.applyFontSize();
     }
@@ -259,12 +255,14 @@ class BingoApp {
 
         // Assign new jokers randomly
         const totalCells = this.cells.length;
-        const jokerIndices = new Set();
-
-        while (jokerIndices.size < Math.min(this.jokerCount, totalCells)) {
-            const randomIndex = Math.floor(Math.random() * totalCells);
-            jokerIndices.add(randomIndex);
+        
+        // Create indices array and shuffle it (Fisher-Yates)
+        const indices = Array.from({ length: totalCells }, (_, i) => i);
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
         }
+        const jokerIndices = new Set(indices.slice(0, Math.min(this.jokerCount, totalCells)));
 
         // Restore non-joker texts and set joker cells
         this.cells.forEach((cell, index) => {
@@ -337,13 +335,6 @@ class BingoApp {
 
         const cellEl = this.bingoBoard.querySelector(`[data-index="${this.currentEditCell}"]`);
         cellEl.querySelector('.cell-text').textContent = cell.text; // Update span inside cell-content
-
-        // The 'empty' class logic was removed in the provided snippet, so I'm omitting it.
-        // if (!newText) {
-        //     cellEl.classList.add('empty');
-        // } else {
-        //     cellEl.classList.remove('empty');
-        // }
 
         this.closeEditModal();
         this.saveToStorage();
@@ -765,7 +756,7 @@ class BingoApp {
     // ========================================
     copyBoardUrl() {
         const url = new URL(window.location.href);
-        url.search = '?view=board';
+        url.searchParams.set('view', 'board');
         url.hash = '';
         const boardUrl = url.toString();
 
@@ -856,7 +847,15 @@ class BingoApp {
 
             this.gridSize = newSize;
             const totalCells = this.gridSize * this.gridSize;
-            const required = totalCells - this.jokerCount;
+            const required = totalCells;
+
+            // Reload pool from preset if current pool is insufficient for new size
+            if (this.currentPresetName && this.fieldPool.length < required) {
+                const preset = this.presets.find(p => p.name === this.currentPresetName);
+                if (preset) {
+                    this.fieldPool = [...preset.fields];
+                }
+            }
 
             // Ensure we have a pool to pick from
             if (this.fieldPool.length === 0) {
@@ -958,7 +957,6 @@ class BingoApp {
             fieldPool: this.fieldPool,
             presets: this.presets,
             currentPresetName: this.currentPresetName,
-            // bingoCount: this.bingoCount,
             currentBingoStates: [...this.currentBingoStates],
             isBingoModalOpen: this.bingoModal.classList.contains('active'),
             fontSize: this.fontSize
@@ -981,7 +979,6 @@ class BingoApp {
                 this.currentPresetName = data.currentPresetName || "";
                 this.fontSize = data.fontSize || 16;
 
-                // this.bingoCount = data.bingoCount || 0; // No longer loaded as cumulative
                 this.currentBingoStates = new Set(data.currentBingoStates || []);
                 const isBingoModalOpen = data.isBingoModalOpen || false;
 
