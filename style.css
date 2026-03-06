@@ -1053,9 +1053,13 @@ body.board-only-view .board-container {
     width: 95%;
     height: 95%;
     object-fit: contain;
-    border-radius: 50%; /* Circular looks better for the face */
+    border-radius: 30%; /* Circular looks better for the face */
     position: relative;
     z-index: 1;
+}
+
+.bingo-cell.joker:hover .joker-icon {
+    animation: wobble 0.4s ease-in-out;
 }
 
 @keyframes drawXLeft {
@@ -1068,4 +1072,11 @@ body.board-only-view .board-container {
     to {
         transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
     }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+    75% { transform: rotate(-4deg); }
 }
