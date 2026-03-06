@@ -859,9 +859,9 @@ class BingoApp {
         this.settingsPanel.classList.toggle('hidden');
 
         if (this.settingsPanel.classList.contains('hidden')) {
-            this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Einstellungen anzeigen';
+            this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Konfiguration anzeigen';
         } else {
-            this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Einstellungen ausblenden';
+            this.toggleSettingsBtn.innerHTML = '<i class="fas fa-cog btn-icon"></i> Konfiguration ausblenden';
         }
     }
 
