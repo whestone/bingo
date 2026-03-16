@@ -6,6 +6,7 @@
     --color-primary: hsl(262, 83%, 58%);
     --color-primary-dark: hsl(262, 83%, 48%);
     --color-primary-light: hsl(262, 83%, 68%);
+    --color-primary-accent: var(--color-secondary);
 
     --color-secondary: hsl(217, 91%, 60%);
     --color-success: hsl(142, 71%, 45%);
@@ -409,7 +410,7 @@ body {
 
 .bingo-cell {
     aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-surface) 100%);
+    background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
     display: flex;
@@ -453,13 +454,13 @@ body {
 }
 
 .bingo-cell.marked {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-accent) 100%);
     border-color: var(--color-primary-light);
     box-shadow: var(--shadow-glow);
     animation: markCell 0.3s ease-out;
 }
 
-.bingo-cell.marked::before {
+.bingo-cell.marked:not(.joker)::before {
     opacity: 1;
 }
 
@@ -1053,7 +1054,7 @@ body.board-only-view .board-container {
     width: 95%;
     height: 95%;
     object-fit: contain;
-    border-radius: 50%; /* Circular looks better for the face */
+    border-radius: 25%; /* Circular looks better for the face */
     position: relative;
     z-index: 1;
 }

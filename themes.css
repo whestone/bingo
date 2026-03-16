@@ -15,6 +15,7 @@
     --color-text-secondary: #a5d8ff;
     --color-primary: #22d3ee; /* Cyan */
     --color-primary-hover: #06b6d4;
+    --color-primary-accent: #3b82f6; /* Blue */
     --color-success: #4ade80;
     --color-warning: #facc15;
     --color-danger: #fb7185;
@@ -30,6 +31,7 @@
     --color-text-secondary: #c8e6c9;
     --color-primary: #66bb6a; /* Green */
     --color-primary-hover: #4caf50;
+    --color-primary-accent: #4caf50; /* Darker Green */
     --color-success: #81c784;
     --color-warning: #ffd54f;
     --color-danger: #e57373;
@@ -45,6 +47,7 @@
     --color-text-secondary: #eeeeee;
     --color-primary: #ef4444; /* Red */
     --color-primary-hover: #dc2626;
+    --color-primary-accent: #991b1b; /* Dark Red */
     --color-success: #4ade80;
     --color-warning: #facc15;
     --color-danger: #ff5252;
@@ -60,6 +63,7 @@
     --color-text-secondary: #ddd6fe;
     --color-primary: #a78bfa; /* Violet */
     --color-primary-hover: #8b5cf6;
+    --color-primary-accent: #6d28d9; /* Deeper Violet */
     --color-success: #34d399;
     --color-warning: #fbbf24;
     --color-danger: #f87171;
@@ -75,6 +79,7 @@
     --color-text-secondary: #e5e5e5;
     --color-primary: #a3a3a3; /* Neutral 400 */
     --color-primary-hover: #737373;
+    --color-primary-accent: #525252; /* Darker Gray */
     --color-success: #4ade80;
     --color-warning: #facc15;
     --color-danger: #ef4444;
@@ -90,60 +95,107 @@
     --color-text-secondary: #fecaca;
     --color-primary: #f59e0b; /* Amber */
     --color-primary-hover: #d97706;
+    --color-primary-accent: #ef4444; /* Red */
     --color-success: #34d399;
     --color-warning: #fbbf24;
     --color-danger: #f87171;
     --color-info: #f472b6;
 }
 
-/* --- Light Themes --- */
-
-[data-theme="classic-light"] {
-    --color-bg: #f9fafb;
-    --color-bg-secondary: #f3f4f6;
-    --color-bg-tertiary: #e5e7eb;
-    --color-border: #d1d5db;
-    --color-text-primary: #111827;
-    --color-text-secondary: #374151;
-    --color-primary: #4f46e5; /* Indigo */
-    --color-primary-hover: #4338ca;
+[data-theme="midnight-commander"] {
+    --color-bg: #020617;            /* Slate 950 */
+    --color-bg-secondary: #0f172a;  /* Slate 900 */
+    --color-bg-tertiary: #1e293b;   /* Slate 800 */
+    --color-border: #334155;        /* Slate 700 */
+    --color-text-primary: #f8fafc;  /* Slate 50 */
+    --color-text-secondary: #94a3b8;/* Slate 400 */
+    --color-primary: #3b82f6;       /* Blue 500 */
+    --color-primary-hover: #2563eb;
+    --color-primary-accent: #6366f1; /* Indigo */
     --color-success: #16a34a;
-    --color-warning: #d97706;
+    --color-warning: #ca8a04;
     --color-danger: #dc2626;
-    --color-info: #2563eb;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --color-info: #0ea5e9;
 }
 
-[data-theme="minty-fresh"] {
-    --color-bg: #f0fdf4;
-    --color-bg-secondary: #dcfce7;
-    --color-bg-tertiary: #bbf7d0;
-    --color-border: #86efac;
-    --color-text-primary: #112b1b;
-    --color-text-secondary: #166534;
-    --color-primary: #22c55e; /* Green */
-    --color-primary-hover: #16a34a;
-    --color-success: #15803d;
-    --color-warning: #f59e0b;
+[data-theme="cyber-neon"] {
+    --color-bg: #000000;
+    --color-bg-secondary: #09090b;  /* Zinc 950 */
+    --color-bg-tertiary: #18181b;   /* Zinc 900 */
+    --color-border: #27272a;        /* Zinc 800 */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a1a1aa;
+    --color-primary: #d946ef;       /* Fuchsia 500 */
+    --color-primary-hover: #c026d3;
+    --color-primary-accent: #22d3ee; /* Cyan */
+    --color-success: #22d3ee;       /* Cyan as success/accent */
+    --color-warning: #facc15;
+    --color-danger: #f43f5e;
+    --color-info: #e879f9;
+}
+
+[data-theme="toxic-green"] {
+    --color-bg: #022c22;            /* Very dark green */
+    --color-bg-secondary: #064e3b;
+    --color-bg-tertiary: #065f46;
+    --color-border: #047857;
+    --color-text-primary: #ecfccb;  /* Lime 100 */
+    --color-text-secondary: #bef264;/* Lime 300 */
+    --color-primary: #84cc16;       /* Lime 500 */
+    --color-primary-hover: #65a30d;
+    --color-primary-accent: #65a30d; /* Darker Lime */
+    --color-success: #22c55e;
+    --color-warning: #eab308;
     --color-danger: #ef4444;
     --color-info: #3b82f6;
-    --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="paper"] {
-    --color-bg: #dbd2b9;
-    --color-bg-secondary: #b9ab83;
-    --color-bg-tertiary: #f0e2b3;
-    --color-border: #dcd3b8;
-    --color-text-primary: #39464b;
-    --color-text-secondary: #839aa1;
-    --color-primary: #268bd2; /* Blue */
-    --color-primary-hover: #1e6a9e;
-    --color-success: #859900;
-    --color-warning: #b58900;
-    --color-danger: #dc322f;
-    --color-info: #2aa198;
-    --shadow-color: rgba(100, 100, 80, 0.1);
+[data-theme="chocolate-dark"] {
+    --color-bg: #1c1917;            /* Stone 950 */
+    --color-bg-secondary: #292524;  /* Stone 900 */
+    --color-bg-tertiary: #44403c;   /* Stone 700 */
+    --color-border: #57534e;        /* Stone 600 */
+    --color-text-primary: #fef3c7;  /* Amber 100 */
+    --color-text-secondary: #fed7aa;/* Orange 200 */
+    --color-primary: #d97706;       /* Amber 600 */
+    --color-primary-hover: #b45309;
+    --color-primary-accent: #b45309; /* Darker Amber */
+    --color-success: #65a30d;
+    --color-warning: #ea580c;
+    --color-danger: #dc2626;
+    --color-info: #0284c7;
+}
+
+[data-theme="monochrome-dark"] {
+    --color-bg: #000000;
+    --color-bg-secondary: #171717;  /* Neutral 900 */
+    --color-bg-tertiary: #262626;   /* Neutral 800 */
+    --color-border: #404040;        /* Neutral 700 */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a3a3a3;/* Neutral 400 */
+    --color-primary: #fafafa;       /* Neutral 50 (White-ish) */
+    --color-primary-hover: #d4d4d4;
+    --color-primary-accent: #a3a3a3; /* Gray */
+    --color-success: #ffffff;       /* Keep minimal color */
+    --color-warning: #d4d4d4;
+    --color-danger: #a3a3a3;
+    --color-info: #e5e5e5;
+}
+
+[data-theme="nebula-dream"] {
+    --color-bg: #1e1b4b;            /* Indigo 950 */
+    --color-bg-secondary: #312e81;  /* Indigo 900 */
+    --color-bg-tertiary: #3730a3;   /* Indigo 800 */
+    --color-border: #4f46e5;        /* Indigo 600 */
+    --color-text-primary: #e0e7ff;  /* Indigo 100 */
+    --color-text-secondary: #c7d2fe;/* Indigo 200 */
+    --color-primary: #818cf8;       /* Indigo 400 */
+    --color-primary-hover: #6366f1;
+    --color-primary-accent: #6366f1; /* Deeper Indigo */
+    --color-success: #34d399;
+    --color-warning: #fbbf24;
+    --color-danger: #f87171;
+    --color-info: #60a5fa;
 }
 
 /* ========================================

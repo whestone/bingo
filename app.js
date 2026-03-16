@@ -930,6 +930,10 @@ class BingoApp {
                 this.fontSize = data.fontSize || 16;
                 this.theme = data.theme || 'default';
 
+                if (this.theme !== 'default' && !this.themes.some(t => t.id === this.theme)) {
+                    this.theme = 'default';
+                }
+
                 if (this.theme === 'default') {
                     document.body.removeAttribute('data-theme');
                 } else {
@@ -991,9 +995,12 @@ class BingoApp {
             { id: 'royal-purple', name: 'Königs-Lila', colors: ['#a78bfa', '#2d2a42', '#f5f3ff'] },
             { id: 'graphite', name: 'Graphit', colors: ['#a3a3a3', '#262626', '#f5f5f5'] },
             { id: 'sunset', name: 'Sonnenuntergang', colors: ['#f59e0b', '#4f1b4f', '#fee2e2'] },
-            { id: 'classic-light', name: 'Klassisch Hell', colors: ['#4f46e5', '#f3f4f6', '#111827'] },
-            { id: 'minty-fresh', name: 'Minzfrisch', colors: ['#22c55e', '#dcfce7', '#14532d'] },
-            { id: 'paper', name: 'Papier', colors: ['#268bd2', '#f5eeda', '#657b83'] }
+            { id: 'midnight-commander', name: 'Mitternacht', colors: ['#3b82f6', '#0f172a', '#e2e8f0'] },
+            { id: 'cyber-neon', name: 'Cyber Neon', colors: ['#d946ef', '#09090b', '#22d3ee'] },
+            { id: 'toxic-green', name: 'Giftgrün', colors: ['#84cc16', '#1a2e05', '#ecfccb'] },
+            { id: 'chocolate-dark', name: 'Zartbitter', colors: ['#d97706', '#271c19', '#fef3c7'] },
+            { id: 'monochrome-dark', name: 'Noir', colors: ['#ffffff', '#000000', '#737373'] },
+            { id: 'nebula-dream', name: 'Nebel', colors: ['#6366f1', '#1e1b4b', '#c7d2fe'] }
         ];
     }
 
