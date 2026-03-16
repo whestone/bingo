@@ -1059,6 +1059,10 @@ body.board-only-view .board-container {
     z-index: 1;
 }
 
+.bingo-cell.joker:hover .joker-icon {
+    animation: wobble 0.6s ease-in-out;
+}
+
 @keyframes drawXLeft {
     to {
         transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
@@ -1069,4 +1073,14 @@ body.board-only-view .board-container {
     to {
         transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
     }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(-7deg); }
+    30% { transform: rotate(7deg); }
+    45% { transform: rotate(-4deg); }
+    60% { transform: rotate(4deg); }
+    75% { transform: rotate(-1deg); }
+    90% { transform: rotate(1deg); }
 }
