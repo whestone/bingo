@@ -16,10 +16,14 @@ class BingoApp {
         this.fontSize = 16; // Default font size in px
         this.minFontSize = 8;
         this.maxFontSize = 32;
+        this.theme = 'default';
+        this.themes = [];
 
         this.initializeElements();
+        this.initializeThemes();
         this.attachEventListeners();
         this.loadFromStorage();
+        this.renderThemeSelector();
         this.generateBoard();
         this.checkViewMode();
     }
@@ -82,6 +86,7 @@ class BingoApp {
         this.bingoModal = document.getElementById('bingoModal');
         this.closeBingoBtn = document.getElementById('closeBingo');
         this.copyBoardUrlBtn = document.getElementById('copyBoardUrlBtn');
+        this.themeSelector = document.getElementById('themeSelector');
     }
 
     attachEventListeners() {
@@ -903,7 +908,8 @@ class BingoApp {
             currentPresetName: this.currentPresetName,
             currentBingoStates: [...this.currentBingoStates],
             isBingoModalOpen: this.bingoModal.classList.contains('active'),
-            fontSize: this.fontSize
+            fontSize: this.fontSize,
+            theme: this.theme
         };
 
         localStorage.setItem('bingoApp', JSON.stringify(data));
@@ -922,6 +928,13 @@ class BingoApp {
                 this.presets = data.presets || [];
                 this.currentPresetName = data.currentPresetName || "";
                 this.fontSize = data.fontSize || 16;
+                this.theme = data.theme || 'default';
+
+                if (this.theme === 'default') {
+                    document.body.removeAttribute('data-theme');
+                } else {
+                    document.body.dataset.theme = this.theme;
+                }
 
                 this.currentBingoStates = new Set(data.currentBingoStates || []);
                 const isBingoModalOpen = data.isBingoModalOpen || false;
@@ -964,6 +977,70 @@ class BingoApp {
         }
 
         this.renderPresetOptions();
+    }
+
+    // ========================================
+    // Theme Management
+    // ========================================
+    initializeThemes() {
+        this.themes = [
+            { id: 'default', name: 'Klassisch Dunkel', colors: ['#6366f1', '#1f2937', '#f9fafb'] },
+            { id: 'deep-ocean', name: 'Tiefsee', colors: ['#22d3ee', '#182949', '#e0f2fe'] },
+            { id: 'forest-night', name: 'Waldnacht', colors: ['#66bb6a', '#25332c', '#e8f5e9'] },
+            { id: 'crimson-peak', name: 'Purpurgipfel', colors: ['#ef4444', '#2d2d2d', '#f5f5f5'] },
+            { id: 'royal-purple', name: 'Königs-Lila', colors: ['#a78bfa', '#2d2a42', '#f5f3ff'] },
+            { id: 'graphite', name: 'Graphit', colors: ['#a3a3a3', '#262626', '#f5f5f5'] },
+            { id: 'sunset', name: 'Sonnenuntergang', colors: ['#f59e0b', '#4f1b4f', '#fee2e2'] },
+            { id: 'classic-light', name: 'Klassisch Hell', colors: ['#4f46e5', '#f3f4f6', '#111827'] },
+            { id: 'minty-fresh', name: 'Minzfrisch', colors: ['#22c55e', '#dcfce7', '#14532d'] },
+            { id: 'paper', name: 'Papier', colors: ['#268bd2', '#f5eeda', '#657b83'] }
+        ];
+    }
+
+    renderThemeSelector() {
+        if (!this.themeSelector) return;
+        this.themeSelector.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        this.themes.forEach(theme => {
+            const preview = document.createElement('div');
+            preview.className = 'theme-preview';
+            preview.dataset.themeId = theme.id;
+            if (theme.id === this.theme) {
+                preview.classList.add('active');
+            }
+
+            preview.innerHTML = `
+                <div class="theme-preview-colors">
+                    <div class="theme-preview-color" style="background-color: ${theme.colors[0]};"></div>
+                    <div class="theme-preview-color" style="background-color: ${theme.colors[1]};"></div>
+                    <div class="theme-preview-color" style="background-color: ${theme.colors[2]};"></div>
+                </div>
+                <div class="theme-preview-name">${theme.name}</div>
+            `;
+
+            preview.addEventListener('click', () => this.changeTheme(theme.id));
+            fragment.appendChild(preview);
+        });
+
+        this.themeSelector.appendChild(fragment);
+    }
+
+    changeTheme(themeId) {
+        this.theme = themeId;
+        if (themeId === 'default') {
+            document.body.removeAttribute('data-theme');
+        } else {
+            document.body.dataset.theme = themeId;
+        }
+
+        // Update active state in UI
+        this.themeSelector.querySelectorAll('.theme-preview').forEach(el => {
+            el.classList.toggle('active', el.dataset.themeId === themeId);
+        });
+
+        this.saveToStorage();
+        this.showNotification(`Theme auf "${this.themes.find(t => t.id === themeId).name}" geändert! 🎨`);
     }
 
     // ========================================
